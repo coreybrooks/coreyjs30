@@ -23,7 +23,7 @@
   <style>
 
     /*
-      css variables attached to root    
+      css variables attached to root, similar to attaching values to html  
     */
     :root {
       --base: #ffc600;
@@ -62,6 +62,24 @@
   </style>
 
   <script>
+    const inputs = document.querySelectorAll(".controls input");
+
+    function handleUpdate() {
+      //this will show everything that is a data- attribute.  for now just data-sizing="px" on the blur and
+      //spacing inputs, we could add anything like data-cool="true"
+      console.log(this.dataset);
+
+      //the data-sizing attribute is used to help change the variables that have px after the value
+      const suffix = this.dataset.sizing || ''; //need '' so the color doesn't have an undefined suffix
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    }
+
+
+    //will only trigger when you let go of the mouse and the change is complete
+    inputs.forEach(input => input.addEventListener ('change', handleUpdate));
+    //will trigger the change event even when you are just moving around the slider
+    inputs.forEach(input => input.addEventListener("mousemove", handleUpdate));
+
   </script>
 
 </body>
