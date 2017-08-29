@@ -87,27 +87,49 @@
     //then you can just type de in the inspector to see the filtered names
 
 
-    const category = document.querySelector('.mw-category');//div class was found by right-clicking on a link on the wiki page 
-    const link = Array.from(category.querySelectorAll('a'));// the ES6 way to turn this into an array
-                                                            // is const link = [...category.querySelectorAll('a')]
+   
+   // const category = document.querySelector('.mw-category');//div class was found by right-clicking on a link on the wiki page 
+   // const link = Array.from(category.querySelectorAll('a'));// the ES6 way to turn this into an array
 
     
 
-    const de = link
-           .map(link => link.textContent)
-           .filter(streetName => streetName.includes('de'));
+    //const de = link
+     //      .map(link => link.textContent)
+      //     .filter(streetName => streetName.includes('de'));
 
 
 
-
+            
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const peopleSorted = people.sort((lastOne, nextOne) => {
+      const [lastA, firstA] = lastOne.split(', ');
+      const [lastB, firstB] = nextOne.split(', ');
+      return lastA > lastB ? 1 : -1  
+    });
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+     
+     const transportation = data.reduce((obj, item) => {
+      if (!obj[item]) {
+        obj[item]=0
+      }
+      obj[item] +=1
 
+      return obj
+     }, {});
+     console.log(transportation);
+
+     //my own practice on sorting
+     const numbers = [3,1,4,5,6,2,3,9,6,5,7,4];
+     const sortedNumbers = numbers.sort((a,b) => {
+       return a>b ? 1 : -1;//putting 1 first and -1 second sorts least to greatest, switching the order will sort greatest to least
+                           //conceptually, is the first one bigger? then go ahead and sort bc we don't want it that way
+     });
+     console.log(sortedNumbers);
   </script>
 </body>
 </html>
