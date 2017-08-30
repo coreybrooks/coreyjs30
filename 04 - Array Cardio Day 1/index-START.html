@@ -63,6 +63,8 @@
 
    //or shorthand for above
    const ordered = inventors.sort((a,b) => a.year > b.year ? 1 : -1);
+   console.log('ordered');
+   console.table(ordered);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
@@ -88,14 +90,14 @@
 
 
    
-   // const category = document.querySelector('.mw-category');//div class was found by right-clicking on a link on the wiki page 
-   // const link = Array.from(category.querySelectorAll('a'));// the ES6 way to turn this into an array
+    const category = document.querySelector('.mw-category');//div class was found by right-clicking on a link on the wiki page 
+    const link = Array.from(category.querySelectorAll('a'));// the ES6 way to turn this into an array
 
     
 
-    //const de = link
-     //      .map(link => link.textContent)
-      //     .filter(streetName => streetName.includes('de'));
+    const de = link
+   .map(link => link.textContent)
+    .filter(streetName => streetName.includes('de'));
 
 
 
@@ -127,7 +129,7 @@
      const numbers = [3,1,4,5,6,2,3,9,6,5,7,4];
      const sortedNumbers = numbers.sort((a,b) => {
        return a>b ? 1 : -1;//putting 1 first and -1 second sorts least to greatest, switching the order will sort greatest to least
-                           //conceptually, is the first one bigger? then go ahead and sort bc we don't want it that way
+                           //conceptually, is the first one bigger? then go ahead and sort bc we don't want it that way     
      });
      console.log(sortedNumbers);
   </script>
