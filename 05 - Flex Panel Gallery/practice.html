@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>flex-box practice</title>
+</head>
+<body>
+
+<div class="panels">
+	<div class="panel panel1">
+		<p>Hi</p>
+		<p>There</p>
+		<p>Man!</p>
+	</div>
+	<div class="panel panel2">
+		<p>You</p>
+		<p>Is</p>
+		<p>Kind!</p>
+	</div>
+	<div class="panel panel3">
+		<p>Take</p>
+		<p>No</p>
+		<p>Crap!</p>
+	</div>
+	<div class="panel panel4">
+		<p>King</p>
+		<p>Obstacle</p>
+		<p>Jumper!</p>
+	</div>
+	<div class="panel panel5">
+		<p>You're</p>
+		<p>Too</p>
+		<p>Good!</p>
+	</div>
+	<div class="panel panel6">
+		<p>Make</p>
+		<p>Big</p>
+		<p>Plans!</p>
+	</div>
+</div>
+
+<style type="text/css">
+    html {
+      box-sizing: border-box;
+      background:#ffc600;
+      font-family:'helvetica neue';
+      font-size: 20px;
+      font-weight: 200;
+  }
+  body {
+  	margin: 0;
+  }
+	.panels {
+		display: flex;
+		min-height: 100vh;
+		overflow: hidden;
+	}
+
+	.panel {
+		height: 100vh;
+		text-align: center;
+		align-content: center;
+		transition: 
+		   font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+		   flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+		   background 0.5s;
+		font-size: 20px;
+    	flex: 1;
+		display: flex;
+		align-content: center;
+		justify-content: center;
+		color: white;
+		flex-direction: column;
+
+	}
+	.panel1 {
+		background-color: blue;
+	}
+	.panel2 {
+		background-color: red;
+	}
+	.panel3 {
+		background-color: yellow;
+	}
+	.panel4 {
+		background-color: orange;
+	}
+	.panel5 {
+		background-color: purple;
+	}
+	.panel6 {
+		background-color: green;
+	}
+
+	.panel > * {
+		margin: 0;
+		transition: transform 0.5s;
+		display: flex;
+		flex: 1 0 auto;
+		flex-direction: column;
+		align-content: center;
+		justify-content: center;
+	}
+
+	.panel > *:first-child {
+		transform: translateY(-100%);
+	}
+	.panel.open-active >*:first-child {
+		transform: translateY(0);
+	}
+
+	.panel > *:last-child {
+		transform: translateY(100%);
+	}
+	.panel.open-active >*:last-child {
+		transform: translateY(0);
+	}
+
+	.panel.open {
+		font-size: 60px;
+		flex: 8;
+	}
+
+</style>
+
+ <script type="text/javascript">
+
+ const panels = document.querySelectorAll(".panel");
+
+function toggleOpen() {
+	console.log("hello");
+	this.classList.toggle('open');
+}
+
+function toggleActive(e) {
+	//set up the event to include the word 'flex' to account for the difference in Safari
+	// the transition end is 'flex' in Safari, and 'flex-grow' everywhere else
+    if (e.propertyName.includes('flex')) {
+    	this.classList.toggle('open-active');
+   }
+}
+
+ panels.forEach(panel => {
+ 	panel.addEventListener("click", toggleOpen);
+ });
+
+  panels.forEach(panel => {
+ 	panel.addEventListener("transitionend", toggleActive);
+ });
+
+ 	
+ </script>
+
+</body>
+</html>
