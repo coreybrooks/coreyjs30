@@ -26,30 +26,42 @@
 
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19 or older?
-    const nineteen = people.some(person => {
-      let age = 2017 - person.year;
-      console.log(`age: ${age}`);
-      return age > 18 ? 1 : -1;
+    const oneNineteen = people.some(person => {
+      const currentYear = (new Date()).getFullYear();
+      return currentYear - person.year >= 19;
     });
-    console.log(`nineteen: ${nineteen}`);
+    console.log({oneNineteen});
     // Array.prototype.every() // is everyone 19 or older?
-    const overNineteen = people.every(person => {
-      let age = 2017 - person.year;
-      return age > 18 ? 1 : -1;
+    const allNineteen = people.every(person => {
+      const currentYear = (new Date()).getFullYear();
+      return currentYear - person.year >= 19;
     });
-    console.log(`overNineteen: ${overNineteen}`);
+    console.log({allNineteen});
 
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
-    const found = comments.find(comment => {
-      return comment.id === 823423 ? 1 : -1});
-    console.log(`found: ${JSON.stringify(found)}`);
+    const found = comments.find(comment => comment.id === 823423);
+    console.log(found);
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+
+    const index = comments.findIndex(comment => comment.id === 2039842);
+
+    console.log(index);
+
+    //this is the splice method: comments.splice(index, 1);
+    console.table(comments);
+
+    //below is popular with redux, make a new array with the index item removed
+    const newComments = [
+    ... comments.slice(0, index), //... is the ES6 syntax to spread the items in the array
+    ... comments.slice(index + 1)
+    ];
+    console.table(newComments);
 
   </script>
 </body>
