@@ -15,15 +15,53 @@
     </ul>
   </form>
 <script>
+//given
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
+//1
 const cities = [];
 
+//2
 const prom = fetch(endpoint)
 .then(blob => blob.json())
 .then(data => cities.push(...data));
 
-console.log(prom);
+//3
+function findMatches(wordToMatch, cities) {
+  return cities.filter(place => {
+
+    //have to use a regex for the matched city, more specfically, it has to be a regex variable
+    //'gi' means: g for global: will search through the entire string, and i for insensitive: doesn't care if it is capitalzed
+    const regex = new RegExp(wordToMatch, 'gi')
+    return place.city.match(regex) || place.state.match(regex);
+  });
+}
+
+//4 initally just made a blank function
+function displaySearch() {
+
+  //7
+  const matchArray = findMatches(this.value, cities);
+  const html = matchArray.map(place => {
+    return `
+    <li>
+    <span class="name">${place.city}, ${place.state}</span>
+    <span class="population">${place.population}</span> 
+    </li> 
+    `;
+  }).join(''); //will return an array of all matches without join(will put commas between the results), we want a string 
+  suggestions.innerHTML = html;
+}
+
+//5
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+//6
+searchInput.addEventListener('change', displaySearch);
+//above 'change' only triggers when you click out of the search box, below will also trigger on keyup
+searchInput.addEventListener('keyup', displaySearch);
+
 
 </script>
   </body>
