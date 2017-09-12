@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>array practice</title>
+</head>
+<body>
+
+<h1>phone conversation practice, check the console</h1>
+
+<script type="text/javascript">
+
+//how to check which employee is missing from a large company.  I asked if it could be considered an array of objects
+//he mentioned hash-tables as a way to limit the 'O(N)' value? i gave two possible ways, the following was his suggestion:
+
+//make and array of all employees with unique ids, then sum the ids of the present employees and compare to the id total, 
+//the difference is the id of the missing employee
+
+//make employee array and sum ids
+const employees = [{name: 'john',id:1},{name: 'jane', id: 2},{name: 'jack', id: 3},{name: 'jill', id: 4}];
+const idTotal = employees.reduce((total, employee) => {
+        return total + employee.id;
+}, 0);
+
+console.log({idTotal});
+
+//make an employee of present employees
+const presentEmployees = [{name: 'john',id:1},{name: 'jane', id: 2},{name: 'jack', id: 3}];
+const presentTotal = presentEmployees.reduce((total, employee) => {
+	return total + employee.id;
+},0);
+
+console.log({presentTotal});
+
+missingId = idTotal - presentTotal;
+
+const missingEmployee = employees.filter(employee => employee.id === missingId ? 1:-1);
+console.log(missingEmployee);
+	
+</script>
+
+</body>
+</html>
