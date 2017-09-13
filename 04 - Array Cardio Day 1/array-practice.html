@@ -23,7 +23,7 @@ const idTotal = employees.reduce((total, employee) => {
 
 console.log({idTotal});
 
-//make an employee of present employees
+//make an array of present employees
 const presentEmployees = [{name: 'john',id:1},{name: 'jane', id: 2},{name: 'jack', id: 3}];
 const presentTotal = presentEmployees.reduce((total, employee) => {
 	return total + employee.id;
@@ -31,11 +31,33 @@ const presentTotal = presentEmployees.reduce((total, employee) => {
 
 console.log({presentTotal});
 
-missingId = idTotal - presentTotal;
+//find the id of the missing employee and display their name
+const missingEmployee = employees.find(employee => employee.id === (idTotal - presentTotal));
+console.log(`missing employee: ${missingEmployee.name}`);
 
-const missingEmployee = employees.filter(employee => employee.id === missingId ? 1: 0);
-console.log(missingEmployee[0].name);
-	
+//=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+//practice making constructors
+let NewPerson = function(name, age, hobby) {
+	let person = {name, age, hobby};
+	console.log(person);
+	return person;
+};
+
+const one = NewPerson("jack", 21, "music");
+const two = NewPerson("jill", 22, "math");
+const three = NewPerson("john", 23, "beer");
+
+let people = [];
+
+people.push(one);
+people.push(two);
+people.push(three);
+
+console.table(people);
+
+
+
 </script>
 
 </body>
