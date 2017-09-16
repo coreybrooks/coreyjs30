@@ -17,7 +17,8 @@
   ctx.lineJoin = 'round'; // indicates that the end of the stroke is rounded
   ctx.lineCap = 'round';
   ctx.lineWidth = 100;
-  ctx.globalCompositeOperation = 'multiply';
+  ctx.globalCompositeOperation = 'xor'; //this will blend the colors accoring to the classification like in photoshop
+                                        //look up globalCompositeOperation on google to see all the operations
 
   let isDrawing = false; //will be used to help function determine when to draw
   let lastX = 0; //used to determine where to start and stop drawing the line
