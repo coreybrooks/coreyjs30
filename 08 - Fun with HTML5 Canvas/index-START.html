@@ -7,6 +7,64 @@
 <body>
 <canvas id="draw" width="800" height="800"></canvas>
 <script>
+
+  const canvas = document.querySelector('#draw'); //get canvas
+  const ctx = canvas.getContext('2d'); //select 2d context
+  canvas.width = window.innerWidth; //set canvas width to size of window
+  canvas.height = window.innerHeight; //set canvas height to size of window
+
+  ctx.strokeStyle = '#BADA55'; //set initial color of stroke
+  ctx.lineJoin = 'round'; // indicates that the end of the stroke is rounded
+  ctx.lineCap = 'round';
+  ctx.lineWidth = 100;
+  ctx.globalCompositeOperation = 'multiply';
+
+  let isDrawing = false; //will be used to help function determine when to draw
+  let lastX = 0; //used to determine where to start and stop drawing the line
+  let lastY= 0;
+  let hue = 0; //starting place for color
+  let direction = true; //used for varying line width
+
+  function draw(e) {
+    if (!isDrawing) return; //this will stop the fn from running when they are not moused down
+    console.log(e);
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+    ctx.beginPath();//this and below 2 start up the line but ut won't be visible until stroke is called
+    ctx.moveTo(lastX, lastY); //start from
+    ctx.lineTo(e.offsetX, e.offsetY); //go to
+    ctx.stroke();
+    [lastX, lastY] = [e.offsetX, e.offsetY] //ES6 trick to assign to variables at once called destructuring an array
+                                            //same as lastX = e.offsetX; and lastY = e.offsetY;
+    hue++;
+    if (hue > 360) { //this isn't necessary for hue, the spectrum goes to 360 and would just continue like degrees. EX. 400 is the same as 40
+      hue = 0;
+    }       
+
+    if(ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+      direction = !direction;
+    }        
+
+    if (direction) {
+      ctx.lineWidth++;
+    }            
+    else {
+      ctx.lineWidth--;
+    }           
+
+  }
+
+  canvas.addEventListener("mousemove", draw);
+  canvas.addEventListener("mousedown", (e) => {
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY] //updates the location of the mouse as soon as mousedown happens, 
+                                            //otherwise the mouse would initially start at (0,0) and subsequently at the end
+                                            //of every line, allowing only one continuous line
+
+    });
+  canvas.addEventListener("mouseup", () => isDrawing = false);
+  canvas.addEventListener("mouseout", () => isDrawing = false);
+
+
 </script>
 
 <style>
