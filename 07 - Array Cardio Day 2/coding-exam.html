@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+</head>
+<body>
+<h1>check the console</h1>
+
+<script type="text/javascript">
+//below where my solutions to the senseye codibility test
+// 1
+function solutionA(A) {
+    // write your code in JavaScript (Node.js 6.4.0)
+    const heads = A.filter(coin => coin === 0);
+    const headsLength = heads.length;
+    const tailsLength = A.length - headsLength;
+    return headsLength > tailsLength ? tailsLength : headsLength;
+}
+
+// 2
+function solutionB(N) {
+    // write your code in JavaScript (Node.js 6.4.0)
+
+  // the following code could be condensed to one line:      
+  // const combined = parseInt(N.toString().split('').sort((a,b) => a>b ? -1 : 1).join().replace(/,/g, ''));  
+
+  // if dJoined = d.join('') instead, the string wouldn't have commas, and the reg exp wouldn't be necessary,
+  // so..  const combined = parseInt(N.toString().split('').sort((a,b) => a>b ? -1 : 1).join(''));
+
+      const b= N.toString();
+      const c=b.split('');
+      const d = c.sort((a,b) => a>b ? -1 : 1);
+      const dJoined = d.join();
+      const combined = parseInt(dJoined.replace(/,/g, ''));      
+      return combined;
+}
+//3
+function solutionC(S) {
+    // write your code in JavaScript (Node.js 6.4.0)
+    const c = S.split('');
+    //below line wasn't necessary, also could have just added .length to the end of closing
+    const opening = c.filter(string => string === '(');
+    const closing = c.filter(string => string === ')');
+    const closingLength = closing.length;    
+
+    return closingLength;
+
+}
+//4 solution from whiteboard
+
+function solutionD(S) {
+    var obj = {}; 
+
+    // write your code in JavaScript (Node.js 6.4.0)
+    const result = S.reduce((obj, value) => { 	
+    	console.log(`value: ${value}`);
+
+    	if (!obj[value]) {
+    	 obj[value]=0
+    	}
+    	obj[value]++
+    	console.log({obj});
+   	    return obj;
+
+    },{});
+
+    console.log(result);
+    console.log(result[')']);
+
+}
+solutionD([')','(','(',')',')','are you going to break if I do this?','(','(']);
+
+
+</script>
+</body>
+</html>
