@@ -40,15 +40,46 @@
     console.assert(p.classList.contains("ouch"), "That is wrong!");
 
     // clearing
-    console.clear(); //good if you want to mess with developers
+    //console.clear(); 
+    //good if you want to mess with developers
 
     // Viewing DOM Elements
+    console.log(p); // shows you the element
+    console.dir(p); // shows you the dropdown so you can see all the associated methods etc.
 
     // Grouping together
+    dogs.forEach(dog => {
+      //could have just put console.group to have them display opened by default
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`I am ${dog.age} years old`);
+      console.log(`That is ${dog.age*7} in dog years`);
+      console.groupEnd(`${dog.name}`);
+    });
 
-    // counting
 
-    // timing
+    // counting //will count anything counts the number of occurences
+    console.count("Corey");
+    console.count("Corey");
+    console.count("Steve");
+    console.count("Corey");
+    console.count("Corey");
+    console.count("Steve");
+    console.count("Steve");
+    console.count("Steve");
+
+    // timing  //will show how long tasks take, could be useful, give a starting place and an ending place
+      console.time('fetching data');
+      fetch('https://api.github.com/users/coreybrooks')
+        .then(data => data.json())
+        .then(data => {
+           console.timeEnd('fetching data');
+           console.log(data);
+        });
+
+    // Tables.
+    console.table(dogs);
+
 
   </script>
 </body>
