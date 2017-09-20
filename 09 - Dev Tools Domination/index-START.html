@@ -18,20 +18,29 @@
     }
 
     // Regular
+    console.log("hello");
 
     // Interpolated
+    console.log("hello I am a %s string", "stupid Interpolated");
 
     // Styled
-
+    console.log('%c I am some great text','font-size: 50px; background: red; text-shadow: 10px 10px 0 blue');
+   
     // warning!
+    console.warn("watch out dude!");
 
     // Error :|
+    console.error("Error, you done did it");
 
     // Info
+    console.info("the T-Rex was actually a sweetheart");
 
     // Testing
+    const p = document.querySelector("p");
+    console.assert(p.classList.contains("ouch"), "That is wrong!");
 
     // clearing
+    console.clear(); //good if you want to mess with developers
 
     // Viewing DOM Elements
 
