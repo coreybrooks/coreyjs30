@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -99,6 +99,19 @@
   </div>
 
 <script>
+
+const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+
+function checkFunc(e) {
+  console.log(e);
+}
+
+
+checkboxes.forEach(checkbox => checkbox.addEventListener("click", checkFunc));
+
+
+checkFunc();
+
 </script>
 </body>
 </html>
