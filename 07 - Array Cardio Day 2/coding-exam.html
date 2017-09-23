@@ -11,6 +11,7 @@
 // 1
 function solutionA(A) {
     // write your code in JavaScript (Node.js 6.4.0)
+    // according to Matt, reduce would have been a better choice bc filter creates another array and wastes space
     const heads = A.filter(coin => coin === 0);
     const headsLength = heads.length;
     const tailsLength = A.length - headsLength;
