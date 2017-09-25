@@ -26,7 +26,10 @@ body {
   font-size: 0;
   overflow: hidden;
 }
-
+/*part I added to toggle fullscreen*/
+.fullscreen {
+  width: 100%;
+}
 /* This css is only applied when fullscreen is active. */
 .player:fullscreen {
   max-width: none;
