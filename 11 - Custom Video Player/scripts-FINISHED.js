@@ -8,18 +8,21 @@ const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.player__slider');
 
 /* Build out functions */
+//toggles back and forth depending on state
 function togglePlay() {
   const method = video.paused ? 'play' : 'pause';
   video[method]();
 }
 
 function updateButton() {
+  //updates the play button icon when state changes
   const icon = this.paused ? '►' : '❚ ❚';
   console.log(icon);
   toggle.textContent = icon;
 }
 
 function skip() {
+  //skips according to the dataset attribute set in the html
  video.currentTime += parseFloat(this.dataset.skip);
 }
 
