@@ -43,7 +43,10 @@
   </div>
 
   <script>
-    //function was given with the starter file.  This function runs all the time when scrolled, but only
+    //he said he didn't really like this project, but others kept asking him to teach them how, he suggest
+    //using it sparingly
+
+    //debounce function was given with the starter file.  This function runs all the time when scrolled, but only
     //runs the inner function every 20 milliseconds.  He showed how the window scroll would log about 60 events
     //just scrolling down the page otherwise  
     function debounce(func, wait = 20, immediate = true) {
@@ -66,6 +69,9 @@
   function checkSlide(e) {
     console.log(e);
     sliderImages.forEach(sliderImage => {
+      console.log({sliderImage});
+      console.log(window.scrollY);
+
       //gives us the how many pixels the bottom of the viewable window is from the top, how far scrolled +
       //the size of the window - half of the height of the image.. we want the image to slide in when the top 
       //of where the image should be had peaked halfway
@@ -75,7 +81,7 @@
       const imageBottom = sliderImage.offsetTop + sliderImage.height;
 
       const isHalfShown = slideInAt > sliderImage.offsetTop;
-      const isNotScrolledPast = window.scrollY <imageBottom;
+      const isNotScrolledPast = window.scrollY < imageBottom;
 
       if (isHalfShown && isNotScrolledPast) {
         sliderImage.classList.add('active');
