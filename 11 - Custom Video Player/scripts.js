@@ -7,6 +7,7 @@ const toggle = player.querySelector('.toggle');
 //this captures all that have the custom data-skip attribute in the HTML tag
 const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.player__slider');
+
  //part I added to toggle fullscreen
 const fullScreen = player.querySelector('.fullScreen');
 
