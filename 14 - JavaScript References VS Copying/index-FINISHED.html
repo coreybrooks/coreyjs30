@@ -88,8 +88,14 @@
     console.clear();
     console.log(wes);
 
+    //this below does create a copy instead of a reference but it is only 1 level deep.  if we try to type dev.social.twitter = '@coolman'; into the console,
+    //this will behave like a reference and also change the value of the original object wes.
     const dev = Object.assign({}, wes);
 
+    //if needed, He said we could go online and find a function called cloneDeep to make a complete clone, he said to be careful bc it is rarely needed
+
+    //this is referred to as the poor man's deep clone, it returns it as a string then immediately parses it back into an object
+    //he doesn't really recommend this method either, there might be some performance issues, said to look it up  
     const dev2 = JSON.parse(JSON.stringify(wes));
 
 
