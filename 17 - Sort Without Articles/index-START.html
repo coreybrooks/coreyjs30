@@ -46,7 +46,7 @@
 <script>
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 const sortedBands = bands.sort((a,b) => {
-  //console.log(a[3]);
+  //this works for sorting, but check the solution for a better method
  
   a.substring(0,3) === 'The' && a[3] === ' ' ? a = a.substring(4) : a = a;
   b.substring(0,3) === 'The' && b[3] === ' ' ? b = b.substring(4) : b = b;
