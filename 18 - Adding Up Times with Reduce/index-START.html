@@ -182,10 +182,10 @@
     </li>
   </ul>
 <script>
-  const li = document.querySelectorAll('li');
-  const timeItems = [...li];
+  //this solution works, the finished file uses mapping but he mentioned this is the more efficient way, using only one reduce
+  const timeItems = [... document.querySelectorAll('li')];
 
-  const total = timeItems.reduce((totSeconds, item) => {
+    const total = timeItems.reduce((totSeconds, item) => {
     const split = item.dataset.time.split(":");
     const seconds = parseInt(split[0]*60) + parseInt(split[1]);
 
@@ -202,7 +202,7 @@
 console.log({hours});
 console.log({minutes});
 console.log({seconds});
-console.log(totalTime);
+console.log({totalTime});
 
 </script>
 </body>
