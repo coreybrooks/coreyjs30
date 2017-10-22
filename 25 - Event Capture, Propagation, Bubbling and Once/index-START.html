@@ -6,6 +6,8 @@
 </head>
 <body class="bod">
 
+<!--capture happens on the way down, bubble on the way up, propagating through each element-->
+
   <div class="one">
     <div class="two">
       <div class="three">
@@ -39,6 +41,29 @@
 
 <button></button>
 <script>
+  //capture happens on the way down, bubble on the way up, propagating through each element
+    const divs = document.querySelectorAll('div');
+  const button = document.querySelector('button');
+
+  function logText(e) {
+    console.log(this.classList.value);
+    // e.stopPropagation(); // stop bubbling!
+    // console.log(this);
+  }
+
+  divs.forEach(div => div.addEventListener('click', logText, {
+    capture: true, //capture is set to false by default, bubbles up by default, 
+                   //when capture is set to true the elementes get triggered on the way down
+    once: true     //once is a new browswer property, it will trigger once and unbind itself
+                   //could be useful for submit buttons etc.
+  }));
+
+  button.addEventListener('click', () => {
+    console.log('Click!!!');
+  }, {
+    once: true
+  });
+
 
 </script>
 </body>
