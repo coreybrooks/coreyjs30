@@ -54,6 +54,24 @@
   </div>
 
 <script>
+  
+    const nav = document.querySelector('#main');
+    let topOfNav = nav.offsetTop; //captures how far the page needs to scroll to hit the top of the nav
+
+    function fixNav() {
+      if(window.scrollY >= topOfNav) {
+        //when the css changes the nav to fixed, the element doesn't take up any space anymore and the content
+        //will shift up, the line below adds padding to the body top equal to the height of the nav element to
+        //stop the shift
+        document.body.style.paddingTop = nav.offsetHeight + 'px';
+        document.body.classList.add('fixed-nav');
+      } else {
+        document.body.classList.remove('fixed-nav');
+        document.body.style.paddingTop = 0;
+      }
+    }
+
+    window.addEventListener('scroll', fixNav);
 
 </script>
 
